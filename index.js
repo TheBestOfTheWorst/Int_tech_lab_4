@@ -1,6 +1,10 @@
-var app = require('express')();
+var express = require("express"); // отдельная переменная для удобства
+var app = express();
+
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+
+app.use(express.static('styles')); // указание каталога для статических ресурсов, в котором будет расположен подключаемый файл css.
 
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/index.html');
